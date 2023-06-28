@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Vetor {
+
+    
+    public static void main(String[] args) {
+       Scanner scan = new Scanner(System.in);
+       
+       int N = scan.nextInt();
+       int M = scan.nextInt();
+       
+       int casas[] = new int[N];
+       int encomendas[] = new int[M];
+       
+        for (int i = 0; i < N; i++) {
+            casas[i] = scan.nextInt();
+        }
+        for (int i = 0; i < M; i++) {
+            encomendas[i] = scan.nextInt();
+        }
+       
+        int c = 0, e = 0, contador=0;
+        
+        if(casas[0]==encomendas[0]){
+            e=1;
+            
+        }
+        while(true){
+            if(encomendas[e]==casas[c]){
+                
+            
+            }else if(encomendas[e]>casas[c]){
+                while(encomenda[e]>casas[c]){
+                    c++;
+                }
+            }else if(encomendas[e]<casas[c]){
+                c++;
+            }
+            
+        }
+        
+        
+    }
+    
+}
