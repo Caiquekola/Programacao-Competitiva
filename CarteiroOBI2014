@@ -1,8 +1,7 @@
 import java.util.Scanner;
+public class ProgramacaoCompetitiva {
 
-public class Vetor {
-
-    
+   
     public static void main(String[] args) {
        Scanner scan = new Scanner(System.in);
        
@@ -21,25 +20,37 @@ public class Vetor {
        
         int c = 0, e = 0, contador=0;
         
-        if(casas[0]==encomendas[0]){
-            e=1;
-            
-        }
-        while(true){
-            if(encomendas[e]==casas[c]){
+        
+        for (int i = 0; i < M; i++) {
+            if(casas[0]==encomendas[i]){
+            e++;
                 
-            
-            }else if(encomendas[e]>casas[c]){
-                while(encomenda[e]>casas[c]){
-                    c++;
-                }
-            }else if(encomendas[e]<casas[c]){
-                c++;
-            }
+            }else{break;}
             
         }
+        
+        while(true){
+            if(encomendas[e]>casas[c]){
+                while(encomendas[e]!=casas[c]){
+                    c++;
+                    contador++;
+                }
+                e++;
+            }else if(encomendas[e]<casas[c]){
+                while(encomendas[e]!=casas[c]){
+                 c--;
+                 contador++;   
+                }
+            e++;
+            }else if(encomendas[e]==casas[c]){
+                e++;
+            }
+            if(e==M){
+                break;
+            }
+        }
+        System.out.println(contador);
+        
         
         
     }
-    
-}
