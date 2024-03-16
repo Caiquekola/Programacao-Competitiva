@@ -1,47 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+import java.io.IOException;
+ 
+/**
+ * IMPORTANT: 
+ *      O nome da classe deve ser "Main" para que a sua solução execute
+ *      Class name must be "Main" for your solution to execute
+ *      El nombre de la clase debe ser "Main" para que su solución ejecutar
  */
-package buscabinaria;
-
 import java.util.Arrays;
 import java.util.Scanner;
-
 public class URI1025CAP4 {
-
-    public int buscaBinaria(int vetor[], int item) {
-        int inicio = 0;
-        int fim = vetor.length;
-        return busca(vetor, item, inicio, fim);
+    public static int  buscaBinaria(int vetor[],int item){
+        return busca(vetor,item,0,vetor.length);
     }
+    public static int busca(int v[], int item, int e, int d){
+        int meio = (e+d)/2;
+                System.out.println(e+" "+meio+" "+d);
 
-    private int busca(int vetor[], int item, int e, int d) {
-        int m = (e + d) / 2;
-        if (m == item) {
-            return m;
+        if(v[meio]==item){
+            return meio;
         }
-        if (item > vetor[item]) {
-            return busca(vetor, item, m + 1, d);
-        } else {
-            return busca(vetor, item, e, m - 1);
+        if(e==d){
+            return -1;
         }
-
+        if(item>v[meio]){
+            return busca(v,item,meio+1,d);
+        }else{
+            return busca(v,item,e,meio-1);
+        }
     }
-//    private int[] insertionSort(int vetor[]){
-//        int i = 0, j = 1;
-//        while(j<vetor.length-1){
-//            int aux = vetor[j];
-//            i = j-1;
-//        }
-//    }
-
-    public static void main(String[] args) {
-        int nMarble = 1, nCasos = 1, cont = 1;
+    public static void sort(int v[]){
+        int i, j, aux;
+        for (i = 1; i < v.length; i++) {
+            j = i - 1;
+            aux = v[i];
+            while(j>=0&&v[j]>aux){
+                v[j+1] = v[j];
+                j--;
+            }
+            v[j+1] = aux;
+        }
+    }
+    public static void main(String[] args) throws IOException {
+ 
+        
+    
+        int nMarble = 1, nCasos = 1, cont = 0;
         Scanner scan = new Scanner(System.in);
-        while (nMarble != 0 && nCasos != 0) {
+        do {
             nMarble = scan.nextInt();
             nCasos = scan.nextInt();
-            if(nMarble != 0 && nCasos != 0){
+            if (nMarble == 0 && nCasos == 0) {
                 break;
             }
             int marble[] = new int[nMarble];
@@ -50,20 +58,30 @@ public class URI1025CAP4 {
             for (int i = 0; i < nMarble; i++) {
                 marble[i] = scan.nextInt();
             }
-            Arrays.sort(marble);
+            sort(marble);
             //System.out.println(Arrays.toString(marble));
-            System.out.printf("CASE# %d:\n", cont);
-            cont++;
+
             for (int i = 0; i < nCasos; i++) {
                 casos[i] = scan.nextInt();
-                int local = Arrays.binarySearch(marble, casos[i])+1;
+            }
+            System.out.printf("CASE# %d:\n", cont + 1);
+                            cont++;
+
+            for (int i = 0; i < nCasos; i++) {
+                int local = buscaBinaria(marble,casos[i]);
+
+                
                 if (local >= 0) {
-                    System.out.printf("%d found at %d\n", casos[i], local);
+                    System.out.printf("%d found at %d\n", casos[i], local+1);
                 } else {
                     System.out.printf("%d not found\n", casos[i]);
                 }
-            }
-        }
 
+            }
+        } while (nMarble != 0 && nCasos != 0);
+
+    
+ 
     }
+ 
 }
