@@ -5,7 +5,7 @@ public class Exc1Robot {
         Scanner scan = new Scanner(System.in);
         int tamanhoMatriz = scan.nextInt();
         int numeroRobos = scan.nextInt();
-        System.out.println(tamanhoMatriz+" "+numeroRobos);
+        System.out.println(tamanhoMatriz + " " + numeroRobos);
         int posColObj = scan.nextInt();
         int posLinObj = scan.nextInt();
         int matriz[][] = new int[tamanhoMatriz][tamanhoMatriz];
@@ -20,14 +20,21 @@ public class Exc1Robot {
         int posLinRob[] = new int[numeroRobos];
         int posColRob[] = new int[numeroRobos];
         for (int i = 0; i < numeroRobos; i++) {
-            posColRob[i] = i*areaDividia;
+            posColRob[i] = i * areaDividia;
             posLinRob[i] = 0;
         }
-        for (int i = 0; i < posColRob.length; i++) {
+        int increment = -1;
+        int i = 0;
+        boolean encontrou = false;
+        while (!encontrou) {
+            for (int j = 0; j < numeroRobos; j++) {
+                while(posLinRob[j]<areaDividia){
+                    
+                }
+            }
             
         }
-        
-    }
 
+    }
 
 }
