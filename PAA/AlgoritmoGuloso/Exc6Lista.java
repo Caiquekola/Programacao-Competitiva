@@ -6,8 +6,6 @@ public class Exc6Lista{
         Scanner scan = new Scanner(System.in);
         int qntEsteiras = 3;
         int qntColunas = 4;
-        int numeroThreads = Runtime.getRuntime().availableProcessors();
-        int qntTrabalha = qntColunas / numeroThreads;
         int matriz[][] = new int[qntEsteiras][qntColunas];
         for (int i = 0; i < qntEsteiras; i++) {
             for (int j = 0; j < qntColunas; j++) {
@@ -32,6 +30,18 @@ public class Exc6Lista{
             }
         }
         return maior;
+    }
+
+    public static int intMaiorVizinho(int[][] matriz, int linha, int coluna){
+        int maior=0;
+        int qntLinhas = matriz.length;
+        if(linha==0&&matriz[0].length>1){
+            return Math.max(matriz[0][coluna], matriz[1][coluna]);
+        }else if(linha==matriz.length-1){
+            return Math.max(matriz[qntLinhas-1][coluna], matriz[qntLinhas-2][coluna]);
+        }else{
+            return Math.max(matriz[linha][coluna], qntLinhas);
+        }
     }
     
         
