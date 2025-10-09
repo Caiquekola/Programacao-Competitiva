@@ -4,19 +4,29 @@ import java.util.List;
 
 public class Exc4Filhos {
     public static void main(String[] args) {
-        
+        Node no1 = new Node(2);
+        Node no2 = new Node(2);
+        Node no3 = new Node(2);
+        Node no4 = new Node(2);
+        System.out.println(no1.checkarNo(2, 0));
+
     }
     
 }   
 
 class Node {
     List<Node> filhos = new LinkedList<>();;
+    public Node(int qntFilhos){
+        for (int i = 0; i < qntFilhos; i++) {
+            filhos.add(new Node());
+        }
+    }
     public Node(){
-        filhos = new LinkedList<>();
+
     }
     //TamanhoLista, Nivel começa com 0
     public int checkarNo(int tamanhoLista, int nivel){
-        if(tamanhoLista!=filhos.size){
+        if(tamanhoLista!=filhos.size()){
             return -1;
         }
         List<Integer> listaNiveis = new ArrayList<>();
