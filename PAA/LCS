@@ -1,0 +1,41 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scan = new Scanner(System.in);
+	    String x = scan.nextLine();
+	    char[] xc = x.toCharArray();
+	    String y = scan.nextLine();
+	    char[] yc = y.toCharArray();
+	    int[][] matriz = new int[x.length()+1][y.length()+1];
+	    for(int i = 0; i<x.length(); i++){
+	        matriz[i][0] = 0; //coluna 0
+	    }
+	    for(int i = 0; i<y.length(); i++){
+	        matriz[0][i] = 0; //linha 0
+	    }
+	    for(int i = 1; i < x.length(); i++){
+	        for(int j = 1; j < y.length(); j++){
+	            if(xc[i]!=yc[j]){
+	                matriz[i][j] = (int)(Math.max(matriz[i-1][j],matriz[i][j-1]));
+	            }else{
+	                matriz[i][j] = (int)(matriz[i-1][j-1] + 1);
+	            }
+	        }
+	    }
+		for(int i = 1; i < x.length(); i++){
+	        for(int j = 1; j < y.length(); j++){
+	            System.out.print(matriz[i][j]+" ");
+	            
+	        }
+	        System.out.println();
+	    }
+	}
+}
