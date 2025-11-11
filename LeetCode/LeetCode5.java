@@ -1,61 +1,53 @@
 public class LeetCode5 {
     public static void main(String[] args) {
-        String str = "ABBAA";
-        System.out.println(longestPalindrome(str));
+        String str = "ccc";
+        System.out.println(Solution.longestPalindrome(str));
     }
-
+}
+class Solution {
     public static String longestPalindrome(String s) {
         int inicio = 0;
-        int fim = 0;
-        int tamMaior = 0;
+        int fim = 1;
+        int tamMaior = 1;
         int tamanhoAtual = 0;
         char[] letras = s.toCharArray();
+        if(letras.length==1){
+            return s;
+        }
         int j = 0;
         int k = 0;
         for (int i = 0; i < s.length(); i++) {
             j = i - 1;
             k = i + 1;
             tamanhoAtual = 1;
-
-            while (k < s.length() && j >= 0) {
-                System.out.println(j + " " + k);
-
-                if (letras[j] == letras[k]) {
-                    tamanhoAtual++;
-                    inicio = j;
-                    fim = k;
-                }
-
-                j--;
-                k++;
-            }
-            if (tamanhoAtual > tamMaior) {
-                tamMaior = tamanhoAtual;
-                inicio = j;
-                fim = k;
-
-            }
-        }
-
-        for (int i = 0; i < s.length(); i++) {
-            j = i - 1;
-            k = i;
-            tamanhoAtual = 1;
-            while (k < s.length() && j >= 0) {
-                System.out.println(j + " " + k);
-                if (letras[j] == letras[k]) {
-                    tamanhoAtual++;
-                }
+            while (k < s.length() && j >= 0 && letras[j] == letras[k]) {
+                tamanhoAtual++;
                 j--;
                 k++;
             }
             if (tamanhoAtual > tamMaior) {
                 tamMaior = tamanhoAtual;
                 inicio = j+1;
-                fim = k+1;
+                fim = k;
             }
         }
-        System.out.println(s.substring(inicio, fim));
-        return s.substring(inicio,fim);
+
+        for (int i = 0; i < s.length(); i++) {
+            j = i;
+            k = i + 1;
+            tamanhoAtual = 1;
+            while (k < s.length() && j >= 0 && letras[j] == letras[k]) {
+                tamanhoAtual++;
+                j--;
+                k++;
+            }
+            if (tamanhoAtual > tamMaior) {
+                tamMaior = tamanhoAtual;
+                inicio = j + 1;
+                fim = k;
+
+            }
+        }
+        return s.substring(inicio, fim);
     }
 }
