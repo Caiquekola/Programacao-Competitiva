@@ -7,10 +7,13 @@ public class LeetCode8 {
         public static int myAtoi(String s) {
             s = s.trim();
             int pos = 0;
+            int result = 0;
+            boolean negativo = false;
             try {
                 char letras[] = s.toCharArray();
                 if (letras[0] == (int) 45) {
                     pos++;
+                    negativo = true;
                 }
                 for (; pos < letras.length; pos++) {
                     int letra = (int) letras[pos];
@@ -18,11 +21,20 @@ public class LeetCode8 {
                         return Integer.parseInt(s.substring(0, pos));
                     }
                 }
+                result = Integer.parseInt(s);
             } catch (Exception e) {
                 return 0;
             }
-
-            return Integer.parseInt(s);
+            /*
+             * s =
+             * "-91283472332"
+             * 
+             * Output
+             * 0
+             * Expected
+             * -2147483648
+             */
+            return result;
         }
     }
 }
