@@ -27,21 +27,21 @@ class Solution {
         boolean subindo = false;
         int linhaAtual = 0;
 
-            for(char c:s.toCharArray()){
-                linhas.get(linhaAtual).append(c);
+        for (char c : s.toCharArray()) {
+            linhas.get(linhaAtual).append(c);
 
-                if(linhaAtual==0||linhaAtual==numRows-1){
-                    subindo = !subindo;
-                }
-
-                linhaAtual += subindo?1:-1;
+            if (linhaAtual == 0 || linhaAtual == numRows - 1) {
+                subindo = !subindo;
             }
-        
-        System.out.println();
+
+            linhaAtual += subindo ? 1 : -1;
+        }
+
+        String result = "";
         for (int i = 0; i < numRows; i++) {
 
-            System.out.println(linhas.get(i).toString());
+            result += linhas.get(i).toString();
         }
-        return "";
+        return result;
     }
 }
