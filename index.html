@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        var entradaChart = [["Item", "Valor", { role: 'style' }], ["A", 0, "blue"], ["B", 0, "red"],
+        ["C", 0, "green"], ["D", 0, "orange"]];
+        function atualizarGrafico(idInput, index, color) {
+            var objNum = document.getElementById(idInput);
+            //monta a entrada gráfico:
+            var itemChart = [idInput, parseFloat(objNum.value), color];
+            entradaChart[index] = itemChart;
+            document.getElementById('fileContent').textContent = entradaChart;
+            drawChart();
+        }
+        //Chart:
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(entradaChart);
+
+            var options = {
+                title: 'Despesas Gerais'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('chart'));
+
+            chart.draw(data, options);
+        }
+
+        function lerArquivo() {
+            const fileInput = document.getElementById('arq');
+            const arquivo = fileInput.files[0];
+
+            if (!arquivo) {
+                console.error("não há arquivo");
+                return;
+            }
+
+            const leitor = new FileReader();
+            leitor.onload = function (e) {
+                const conteudo = e.target.result;
+                const linhas = conteudo.split("\n");
+                for (let i = 0; i < linhas.length; i++) {
+                    const letras = linhas[i].split(",");
+                    atualizarGrafico(letras[0],letras[1],letras[2])
+                }
+
+            }
+            leitor.readAsText(arquivo);
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="file" name="" id="arq" onchange="lerArquivo()">
+    <pre id="fileContent"></pre>
+    <input type="number" id="A" name="quantidade a" min="1" value=0 max="100"
+        onChange="atualizarGrafico('A',1, 'blue')">
+    <input type="number" id="B" name="quantidade b" min="1" value=0 max="100" onChange="atualizarGrafico('B',2, 'red')">
+    <input type="number" id="C" name="quantidade c" min="1" value=0 max="100"
+        onChange="atualizarGrafico('C',3, 'green')">
+    <input type="number" id="D" name="quantidade d" min="1" value=0 max="100"
+        onChange="atualizarGrafico('D',4, 'orange')">
+    <div id="chart" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

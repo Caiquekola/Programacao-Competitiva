@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfico via Upload CSV</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .controls { margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <h3>1. Selecione seu arquivo CSV</h3>
+        <p>O arquivo deve ter o formato: <i>Nome, Valor</i> (separado por vírgula).</p>
+        <input type="file" id="csvFileInput" accept=".csv">
+    </div>
+
+    <div id="chart_div" style="width: 900px; height: 500px; border: 1px solid #ccc;">
+        <p style="text-align:center; padding-top: 200px; color: #888;">
+            O gráfico aparecerá aqui após o upload.
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        // 1. Carrega o pacote do Google Charts
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+
+        // 2. Configura o ouvinte do botão de upload
+        document.getElementById('csvFileInput').addEventListener('change', lerArquivo);
+
+        function lerArquivo(evt) {
+            const file = evt.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const conteudo = e.target.result;
+                processarCSV(conteudo);
+            };
+
+            reader.readAsText(file);
+        }
+
+        function processarCSV(textoCvs) {
+            // Divide as linhas (quebra de linha)
+            const linhas = textoCvs.split('\n');
+            
+            // Array que o Google Charts vai receber. 
+            // Começa vazio, vamos preencher.
+            let dadosFormatados = [];
+
+            const cabecalho = linhas[0].split(',');
+            if (cabecalho.length < 2) {
+                alert("Formato de CSV inválido. Use: Nome,Valor");
+                return;
+            }
+            
+            // Adiciona o cabeçalho ao array (ex: ['Item', 'Quantidade'])
+            dadosFormatados.push([cabecalho[0].trim(), cabecalho[1].trim()]);
+
+            // Itera sobre as linhas de dados (começando do índice 1)
+            for (let i = 1; i < linhas.length; i++) {
+                const linhaAtual = linhas[i].trim();
+                
+                // Ignora linhas vazias
+                if (!linhaAtual) continue;
+
+                const colunas = linhaAtual.split(',');
+
+                // Validação básica
+                if (colunas.length >= 2) {
+                    const label = colunas[0].trim();
+                    // IMPORTANTE: Converter a string do CSV para Número
+                    const valor = parseFloat(colunas[1].trim());
+
+                    // Só adiciona se o valor for um número válido
+                    if (!isNaN(valor)) {
+                        dadosFormatados.push([label, valor]);
+                    }
+                }
+            }
+
+            desenharGrafico(dadosFormatados);
+        }
+
+        function desenharGrafico(arrayDados) {
+            // Transforma o array JS em DataTable do Google
+            const data = google.visualization.arrayToDataTable(arrayDados);
+
+            const options = {
+                title: 'Dados Importados do CSV',
+                hAxis: {title: arrayDados[0][0]},
+                vAxis: {title: arrayDados[0][1]},
+                legend: { position: 'none' } // Opcional: remove legenda se for cor única
+            };
+
+            const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+</html>
