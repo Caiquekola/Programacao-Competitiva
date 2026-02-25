@@ -10,11 +10,7 @@ public class OrdenarObjeto {
         paises.add(new Pais("China", 10, 20));
         paises.add(new Pais("Austria", 3, 3));
         
-        Comparator<Pais> comp = Comparator
-            .comparing(Pais::getHabitantes)
-            // .thenComparing(Pais::getHabitantes)
-            .thenComparing(Pais::getArea);
-        paises.sort(comp);
+        paises.sort(Comparator.comparing(p -> p.nome).reversed());
 
         for (Pais pais : paises) {
             System.out.println(pais);
