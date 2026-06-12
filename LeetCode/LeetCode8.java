@@ -5,45 +5,46 @@ public class LeetCode8 {
         System.out.println(Solution.myAtoi(args[0]));
     }
 
+    public boolean isDigit(char c) {
+        return c >= '0' && c <= '9';
+    }
+
     class Solution {
         public static int myAtoi(String s) {
             s = s.trim();
+            if (s.length() == 0) {
+                return 0;
+            }
+            double reposta = 0;
             char[] letras = s.toCharArray();
-            int pos = 0;
-            if (letras.length == 0) {
-                return 0;
-            }
+            boolean negativo = false;
+            int i = 0;
             if (letras[0] == '-' || letras[0] == '+') {
-                pos++;
-                if(letras.length==1){
-                    return 0;
+                if (letras[i] == '-')
+                    negativo = true;
+                i++;
+            }
+            for (; i < letras.length; i++) {
+
+                if (Character.isDigit(letras[i])) {
+                    int numero = Character.getNumericValue(letras[i]);
+                    reposta = (reposta * 10) + numero;
+                    System.out.println(reposta);
+                    continue;
                 }
+                break;
             }
-            for (int i = pos; i < letras.length; i++) {
-                if (((int) letras[i]) >= 48 && (int) letras[i] <= 57) {
-                    pos++;
-                }else{
-                    break;
-                }
+            if (negativo) {
+                reposta *= -1;
             }
-            if ((letras[0] == '-' || letras[0] == '+')&&pos==1) {
-                {
-                    return 0;
-                }
+            if (reposta > Integer.MAX_VALUE) {
+                reposta = Integer.MAX_VALUE;
+            } else if (reposta < Integer.MIN_VALUE) {
+                reposta = Integer.MIN_VALUE;
             }
-            if(pos == 0){
-                return 0;
-            }
-            BigInteger value = new BigInteger(s.substring(0,pos));
-            int comp = value.compareTo(new BigInteger(String.valueOf(Integer.MAX_VALUE)));
-            if(comp==1){
-                return Integer.MAX_VALUE;
-            }else if(comp==-1){
-                return Integer.MIN_VALUE;
-            }else {
-                return Integer.valueOf(s.substring(0, pos));
-            }
+            return (int) reposta;
         }
+
     }
 
 }
