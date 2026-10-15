@@ -12,22 +12,39 @@ public class LeetCode15 {
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
-        Set<Integer> complemento = new TreeSet<>();
-        for (int n : nums) {
-            complemento.add(n);
-        }
-        List<List<Integer>> resposta =  new ArrayList<ArrayList<Integer>>();
-        List<Integer> rAtual;
-        for (int i = 0; i < nums.length; i++) {
-            int j = i + 1;
-            int k = nums[nums.length-1];
-            int valorSoma = nums[i] + nums[j] + nums[k];
-            if(valorSoma=0){
-                rAtual = List.of(nums[i],nums[j],nums[k]);
+        List<List<Integer>> resposta = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length-2; i++) {
+            if(i>0&&nums[i]==nums[i-1]){
+                continue;
             }
+            if(nums[i]>0){
+                break;
+            }
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int valorSoma = nums[i] + nums[j] + nums[k];
+                if (valorSoma == 0) {
+                    resposta.add(List.of(nums[i],nums[j],nums[k]));
+                    j++;
+                    k--;
+                    while(j<k&&nums[j]==nums[j-1]){
+                        j++;
+                    }
+                    while(j<k && nums[k]==nums[k+1]){
+                        k--;
+                    }
+                }else if (valorSoma < 0) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+
         }
-        System.out.println(complemento);
-        return new ArrayList<List<Integer>>();
+        System.out.println(resposta);
+        return resposta;
     }
 
     /*
