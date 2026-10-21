@@ -25,33 +25,98 @@
     &quot;accountId&quot;: &quot;21b28c12-9163-4597-88e3-73823ac2d17b&quot;
   }
 }</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.630804161508157" />
+      <entry key="MS500" value="4.013219399826102" />
+      <entry key="S2" value="12.075657732934589" />
+      <entry key="S5" value="20.167502694257223" />
+      <entry key="S10" value="24.97002483068771" />
+      <entry key="S30" value="29.930377094511044" />
+      <entry key="S60" value="32.96236892948283" />
+      <entry key="M2" value="40.88236764584266" />
+      <entry key="M5" value="66.74153533251389" />
+      <entry key="M10" value="89.84444672873886" />
+      <entry key="M15" value="101.03850492730871" />
+      <entry key="M30" value="115.37915674145461" />
+      <entry key="H1" value="125.69878479758897" />
+      <entry key="H2" value="133.1654284447188" />
+      <entry key="H4" value="138.01749851962825" />
+      <entry key="D1" value="142.90778421434587" />
+      <entry key="W1" value="143.84138446322154" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.104393469842276E-66" />
+      <entry key="S2" value="3.243073911242453E-17" />
+      <entry key="S5" value="2.648466768617952E-7" />
+      <entry key="S10" value="6.092831147944175E-4" />
+      <entry key="S30" value="0.12931291750136414" />
+      <entry key="S60" value="0.6188200016956752" />
+      <entry key="M2" value="2.0292947368776133" />
+      <entry key="M5" value="5.960765688516189" />
+      <entry key="M10" value="9.263107332713407" />
+      <entry key="M15" value="10.83703230608831" />
+      <entry key="M30" value="12.848523502476995" />
+      <entry key="H1" value="14.31772971828312" />
+      <entry key="H2" value="15.40152149493008" />
+      <entry key="H4" value="16.114188170592527" />
+      <entry key="D1" value="16.837775403123864" />
+      <entry key="W1" value="16.97642843191415" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.5340620517609294" />
+      <entry key="MS500" value="3.9238191512867306" />
+      <entry key="S2" value="12.010000182249376" />
+      <entry key="S5" value="20.121633969880648" />
+      <entry key="S10" value="24.940745955502845" />
+      <entry key="S30" value="30.041021392487476" />
+      <entry key="S60" value="33.55923954168571" />
+      <entry key="M2" value="42.879455102856944" />
+      <entry key="M5" value="72.6637451830822" />
+      <entry key="M10" value="99.07734656996546" />
+      <entry key="M15" value="111.85192338718113" />
+      <entry key="M30" value="128.21364799455634" />
+      <entry key="H1" value="140.0086789580504" />
+      <entry key="H2" value="148.56272730713042" />
+      <entry key="H4" value="154.12947464976887" />
+      <entry key="D1" value="159.74517384926483" />
+      <entry key="W1" value="160.81775731675677" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2xmgJJ5PKNwEFQcpOZdyJP7U40v" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
       </set>
     </attachedChunks>
   </component>
