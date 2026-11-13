@@ -16,20 +16,6 @@ public class LeetCode12 {
             return milhares[num/1000]+centenas[(num%1000)/100]+dezenas[(num%100)/10]+unidades[(num%10)];
         }
 
-        class Mapa {
-            int valor;
-            char letra;
-
-            public Mapa(int v, char l) {
-                this.valor = v;
-                this.letra = l;
-            }
-
-            @Override
-            public String toString() {
-                return "Mapa [valor=" + valor + ", letra=" + letra + "]";
-            }
-
-        }
+       
     }
 }

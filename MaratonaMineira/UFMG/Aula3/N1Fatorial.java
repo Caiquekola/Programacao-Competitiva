@@ -13,5 +13,13 @@ public class N1Fatorial {
             System.out.println(i);
         }
 
+        int n = scan.nextInt(); 
+        for (int i = 1; i < fatoriais.length; i++) {
+            if(fatoriais[i]==n){
+                System.out.println(fatoriais[i]);
+            }
+        }
+
+
     }
 }
